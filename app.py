@@ -8,31 +8,27 @@ numeros = []
 while True:
     num = str(input("Digite um número inteiro com 4 digitos, com pelo menos 2 diferentes: "))
 
-    if int(num) > 999:
-        print('entrou')
-        for algarismo in num:
-            numeros.append(int(algarismo))
+    while num != 6174:
+        if int(num) > 999 and int(num) < 9999 and num.isdigit():
+            for algarismo in num:
+                numeros.append(algarismo)
 
-        crescendo = sorted(numeros)
-        descrescendo = sorted(numeros, reverse=True)
+            crescendo = sorted(numeros)
+            descrescendo = sorted(numeros, reverse=True)
 
-        num1, num2, num3, num4 = crescendo
-        print(num1,num2, num3, num4)
+            num1, num2, num3, num4 = crescendo
+            numeroInteiro = str(num1) + str(num2) + str(num3) + str(num4)
+            print(numeroInteiro)
 
-        num5, num6, num7, num8 = descrescendo
-        print(descrescendo)
+            num5, num6, num7, num8 = descrescendo
+            numeroInteiro2 = str(num5) + str(num6) + str(num7) + str(num8)
+            print(numeroInteiro2)
 
-        # resultado = descrescendo (crescendo)
-        # print(resultado)
+            operacao = int(numeroInteiro2) - int(numeroInteiro)
+            print(operacao)
+            if operacao == 6174:
+                print('Parabéns, você chegou na constante de Kaprecar!')
+                break
 
-        
-        break
-    else:
-        print('Número inválido! Digite um número inteiro com 4 dígitos, com pelo menos 2 diferentes.')
-
-
-# lista = [20, 30, 40, 10]
-
-# print(sorted(lista))
-
-# print(sorted(lista, reverse=True))
+        else:
+            print('Número inválido! Digite um número inteiro com 4 dígitos, com pelo menos 2 diferentes.')
