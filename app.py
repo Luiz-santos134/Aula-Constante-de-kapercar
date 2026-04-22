@@ -8,27 +8,30 @@ numeros = []
 while True:
     num = str(input("Digite um número inteiro com 4 digitos, com pelo menos 2 diferentes: "))
 
-    while num != 6174:
-        if int(num) > 999 and int(num) < 9999 and num.isdigit():
-            for algarismo in num:
-                numeros.append(algarismo)
+    if not (int(num) > 999 and int(num) < 9999) or not num.isdigit():
+        print("Número inválido. Por favor, digite um número inteiro com 4 dígitos, com pelo menos 2 diferentes.")
+        continue
 
-            crescendo = sorted(numeros)
-            descrescendo = sorted(numeros, reverse=True)
+    while int(num) != 6174:
+        numeros=[]
+        for algarismo in num:
+            numeros.append(algarismo)
 
-            num1, num2, num3, num4 = crescendo
-            numeroInteiro = str(num1) + str(num2) + str(num3) + str(num4)
-            print(numeroInteiro)
+        crescendo = sorted(numeros) #faz uma lista com os algarismos do numero em ordem crescente
+        descrescendo = sorted(numeros, reverse=True) #faz uma lista com os algarismos do numero em ordem decrescente, o reverse=True inverte a ordem da lista
 
-            num5, num6, num7, num8 = descrescendo
-            numeroInteiro2 = str(num5) + str(num6) + str(num7) + str(num8)
-            print(numeroInteiro2)
+        num1, num2, num3, num4 = crescendo
+        numeroInteiro = str(num1) + str(num2) + str(num3) + str(num4)
+        # print(numeroInteiro)
 
-            operacao = int(numeroInteiro2) - int(numeroInteiro)
-            print(operacao)
-            if operacao == 6174:
-                print('Parabéns, você chegou na constante de Kaprecar!')
-                break
+        num5, num6, num7, num8 = descrescendo
+        numeroInteiro2 = str(num5) + str(num6) + str(num7) + str(num8)
+        # print(numeroInteiro2)
 
-        else:
-            print('Número inválido! Digite um número inteiro com 4 dígitos, com pelo menos 2 diferentes.')
+        operacao = int(numeroInteiro2) - int(numeroInteiro)
+        num = str(operacao).zfill(4) #zfill para preencher com zeros a esquerda caso o resultado seja menor que 4 digitos
+        print(operacao)
+        
+
+    print('Parabéns, você chegou na constante de Kaprecar!')
+    break
